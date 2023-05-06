@@ -1,0 +1,11 @@
+{
+    "packages": {
+        "java": "openjdk",
+        "c/c++": ""
+    },
+
+
+    "commands": {
+
+    }
+}
