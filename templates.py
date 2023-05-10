@@ -20,7 +20,7 @@ class Languanges():
             
     class CLike():
 
-        packages = ["gcc", "g++", "clang"]
+        packages = ["gcc", "g++", "clang", "rust cargo"]
 
         def install(self, environment_name):
             container_name = Docker.create_container()
