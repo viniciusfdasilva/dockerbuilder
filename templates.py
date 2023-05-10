@@ -1,5 +1,9 @@
 from docker import Docker
 
+class Essentials():
+
+    packages = ["fish", "vim", "nano", "micro"]
+       
 class Languanges():
 
     class Python():
@@ -10,7 +14,9 @@ class Languanges():
             container_name = Docker.create_container()
 
             if container_name:
-                Docker.build_environment(self.packages, None, container_name, environment_name)
+
+                joined_packages = self.packages + Essentials().packages
+                Docker.build_environment(joined_packages, None, container_name, environment_name)
             
     class CLike():
 
@@ -20,7 +26,9 @@ class Languanges():
             container_name = Docker.create_container()
 
             if container_name:
-                Docker.build_environment(self.packages, None, container_name, environment_name)
+
+                joined_packages = self.packages + Essentials().packages
+                Docker.build_environment(joined_packages, None, container_name, environment_name)
 
     class Java():
 
@@ -30,7 +38,9 @@ class Languanges():
             container_name = Docker.create_container()
 
             if container_name:
-                Docker.build_environment(self.packages, None, container_name, environment_name)
+
+                joined_packages = self.packages + Essentials().packages
+                Docker.build_environment(joined_packages, None, container_name, environment_name)
 
 class WebFullStack():
 
@@ -42,7 +52,9 @@ class WebFullStack():
             container_name = Docker.create_container()
 
             if container_name:
-                Docker.build_environment(self.packages, None, container_name, environment_name)
+
+                joined_packages = self.packages + Essentials().packages
+                Docker.build_environment(joined_packages, None, container_name, environment_name)
 
     class Mysql():
 
@@ -52,7 +64,9 @@ class WebFullStack():
             container_name = Docker.create_container()
 
             if container_name:
-                Docker.build_environment(self.packages, None, container_name, environment_name)
+
+                joined_packages = self.packages + Essentials().packages
+                Docker.build_environment(joined_packages, None, container_name, environment_name)
 
     class Nginx():
 
@@ -62,7 +76,9 @@ class WebFullStack():
             container_name = Docker.create_container()
 
             if container_name:
-                Docker.build_environment(self.packages, None, container_name, environment_name)
+
+                joined_packages = self.packages + Essentials().packages
+                Docker.build_environment(joined_packages, None, container_name, environment_name)
 
     class Apache():
 
@@ -72,7 +88,9 @@ class WebFullStack():
             container_name = Docker.create_container()
 
             if container_name:
-                Docker.build_environment(self.packages, None, container_name, environment_name)
+
+                joined_packages = self.packages + Essentials().packages
+                Docker.build_environment(joined_packages, None, container_name, environment_name)
 
     class Django():
 
@@ -83,4 +101,6 @@ class WebFullStack():
             container_name = Docker.create_container()
 
             if container_name:
-                Docker.build_environment(self.packages, self.commands, container_name, environment_name)
+
+                joined_packages = self.packages + Essentials().packages
+                Docker.build_environment(joined_packages, None, container_name, environment_name)
