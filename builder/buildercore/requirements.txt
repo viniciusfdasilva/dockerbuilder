@@ -1,0 +1,4 @@
+django
+pyinstaller
+tqdm
+argparse

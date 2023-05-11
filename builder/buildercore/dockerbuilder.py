@@ -15,6 +15,7 @@ parser = argparse.ArgumentParser(prog="DockerBuilder", add_help=True)
 langs_softwares = parser.add_argument_group("Languanges and Softwares", "")
 
 langs_softwares.add_argument("-l", "--list")
+#langs_softwares.add_argument("-S", "--start")
 #langs_softwares.add_argument("-s", "--stop")
 #langs_softwares.add_argument("-o", "--option", type=str, required=True, choices=["clike","java", "python", "ruby"])
 #langs_softwares.add_argument("-n", "--name",   type=str, required=True)
@@ -50,6 +51,10 @@ webfullstack_frameworks = {"django" : WebFullStack.Django()}
 #if args.option:
 
 #    languanges_and_softwares.get(args.option).install(args.name)
+
+
+#if args.start:
+#    Environment.start_environment(args.start)
 
 if args.list:
     Environment.list_environments()

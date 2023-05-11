@@ -6,6 +6,10 @@ from utils import Utils
 class Docker():
 
     @staticmethod
+    def start(container_name):
+        return os.system(f"docker start {container_name}")
+
+    @staticmethod
     def stop(container_name):
         return os.system(f"docker stop {container_name}")
 
@@ -70,10 +74,8 @@ class Docker():
 
             print(f"Container name {container_name}")
 
-            os.system(f'docker exec -it {container_name} echo "Welcome to:" | lolcat -a -s 95')
-            os.system(f'docker exec -it {container_name} figlet "Docker Builder!" | lolcat -a -s 95')
-            os.system(f'docker exec -it {container_name} echo "Version: 0.1" | lolcat -a -s 95')
-            os.system(f'docker exec -it {container_name} echo "Author: Vinicius F. da Silva" | lolcat -a -s 95')
+            os.system(f'docker cp logo {container_name}:/tmp/')
+            os.system(f'docker exec -it {container_name} lolcat -a -s 95 /tmp/logo')
             os.system(f"docker exec -it {container_name} fish")
         
         else:
