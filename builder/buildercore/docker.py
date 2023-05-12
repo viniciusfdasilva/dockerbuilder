@@ -6,8 +6,25 @@ from utils import Utils
 class Docker():
 
     @staticmethod
+    def navigate(container_name):
+
+        os.system(f'docker cp logo {container_name}:/tmp/ > /dev/null')
+        os.system(f'docker exec -it {container_name} lolcat -a -s 95 /tmp/logo')
+        
+        resp = os.system(f"docker exec -it {container_name} fish")
+
+        if resp != 0:
+            return os.system(f"docker exec -it {container_name} sh")
+        
+        return resp
+    
+    @staticmethod
     def start(container_name):
         return os.system(f"docker start {container_name}")
+
+    @staticmethod
+    def rm(container_name):
+        return os.system(f"docker rm {container_name}")
 
     @staticmethod
     def stop(container_name):

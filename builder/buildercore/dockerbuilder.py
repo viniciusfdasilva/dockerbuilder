@@ -12,14 +12,17 @@ from db.models import Environment
 
 parser = argparse.ArgumentParser(prog="DockerBuilder", add_help=True)
 
-langs_softwares = parser.add_argument_group("Languanges and Softwares", "")
+usages = parser.add_argument_group("usages")
 
-langs_softwares.add_argument("-l", "--list")
-#langs_softwares.add_argument("-S", "--start")
-#langs_softwares.add_argument("-s", "--stop")
-#langs_softwares.add_argument("-o", "--option", type=str, required=True, choices=["clike","java", "python", "ruby"])
-#langs_softwares.add_argument("-n", "--name",   type=str, required=True)
+usages.add_argument("-l", "--list",  action="store_true" , help="List all environments avaliable", required=False)
+usages.add_argument("-S", "--start", help="Start system environment",   required=False)
+usages.add_argument("-s", "--stop",  help="Stop system environment",    required=False)
+usages.add_argument("-r", "--rm",    help="Remove system environment", required=False)
+usages.add_argument("-n", "--navigate", help="Navigate inside the environment", required=False)
 
+createenv = parser.add_argument_group("createenv")
+
+createenv.add_argument("-o", "--option", choices=["clike", "java", "python", "ruby"], required=False)
 #fullstack_package = parser.add_argument_group("WebStack", "")
 
 #fullstack_package.add_argument("-d","--db", type=str, required=False)
@@ -48,19 +51,25 @@ webfullstack_webservers = {
 
 webfullstack_frameworks = {"django" : WebFullStack.Django()}
 
-#if args.option:
+if args.option:
 
-#    languanges_and_softwares.get(args.option).install(args.name)
+    name = input("Please enter environment name: ")
+    languanges_and_softwares.get(args.option).install(name, args.option)
 
+if args.navigate:
+    Environment.navigate(args.navigate)
 
-#if args.start:
-#    Environment.start_environment(args.start)
+if args.start:
+    Environment.start_environment(args.start)
 
 if args.list:
     Environment.list_environments()
 
-#if args.stop:
-#    Environment.stop_environment(args.stop)
+if args.rm:
+    Environment.rm_environment(args.rm)
+
+if args.stop:
+    Environment.stop_environment(args.stop)
 #else:
 #
 #    webfullstack_databases.get(args.db).install(args.name)

@@ -19,14 +19,12 @@ class Languanges():
 
         packages = ["python3", "py3-pip"]
 
-        def install(self, environment_name):
+        def install(self, environment_name, template):
             container_name = Docker.create_container()
-
-            
 
             if container_name:
                 
-                Environment.objects.get_or_create(container_name=container_name, name=environment_name)
+                Environment.objects.get_or_create(container_name=container_name, name=environment_name, template=template)
 
                 joined_packages = self.packages + Essentials().packages
                 Docker.build_environment(joined_packages, None, container_name, environment_name)
@@ -35,26 +33,26 @@ class Languanges():
 
         packages = ["gcc", "g++", "clang", "rust cargo"]
 
-        def install(self, environment_name):
+        def install(self, environment_name, template):
             container_name = Docker.create_container()
 
             if container_name:
                 
-                Environment.objects.get_or_create(container_name=container_name,name=environment_name)
+                Environment.objects.get_or_create(container_name=container_name,name=environment_name, template=template)
 
                 joined_packages = self.packages + Essentials().packages
                 Docker.build_environment(joined_packages, None, container_name, environment_name)
 
     class Java():
 
-        packages = ["openjdk8", "openjdk11", "openjdk17"]
+        packages = ["openjdk17"]
 
-        def install(self, environment_name):
+        def install(self, environment_name, template):
             container_name = Docker.create_container()
 
             if container_name:
                 
-                Environment.objects.get_or_create(container_name=container_name,name=environment_name)
+                Environment.objects.get_or_create(container_name=container_name,name=environment_name, template=template)
 
                 joined_packages = self.packages + Essentials().packages
                 Docker.build_environment(joined_packages, None, container_name, environment_name)
@@ -63,11 +61,13 @@ class Languanges():
 
         packages = ["ruby"]
 
-        def install(self, environment_name):
+        def install(self, environment_name, template):
             container_name = Docker.create_container()
 
             if container_name:
                 
+                Environment.objects.get_or_create(container_name=container_name,name=environment_name, template=template)
+
                 joined_packages = self.packages + Essentials().packages
                 Docker.build_environment(joined_packages, None, container_name, environment_name)
                 
@@ -77,12 +77,12 @@ class WebFullStack():
 
         packages = ["postgresql", "postgresql-client"]
 
-        def install(self, environment_name):
+        def install(self, environment_name, template):
             container_name = Docker.create_container()
 
             if container_name:
                 
-                Environment.objects.get_or_create(container_name=container_name,name=environment_name)
+                Environment.objects.get_or_create(container_name=container_name,name=environment_name, template=template)
 
                 joined_packages = self.packages + Essentials().packages
                 Docker.build_environment(joined_packages, None, container_name, environment_name)
@@ -91,12 +91,12 @@ class WebFullStack():
 
         packages = ["mysql", "mysql-client"]
 
-        def install(self, environment_name):
+        def install(self, environment_name, template):
             container_name = Docker.create_container()
 
             if container_name:
 
-                Environment.objects.get_or_create(container_name=container_name,name=environment_name)
+                Environment.objects.get_or_create(container_name=container_name,name=environment_name, template=template)
 
                 joined_packages = self.packages + Essentials().packages
                 Docker.build_environment(joined_packages, None, container_name, environment_name)
@@ -105,12 +105,12 @@ class WebFullStack():
 
         packages = ["nginx"]
 
-        def install(self, environment_name):
+        def install(self, environment_name, template):
             container_name = Docker.create_container()
 
             if container_name:
                 
-                Environment.objects.get_or_create(container_name=container_name,name=environment_name)
+                Environment.objects.get_or_create(container_name=container_name,name=environment_name, template=template)
 
                 joined_packages = self.packages + Essentials().packages
                 Docker.build_environment(joined_packages, None, container_name, environment_name)
@@ -119,12 +119,12 @@ class WebFullStack():
 
         packages = ["apache2"]
 
-        def install(self, environment_name):
+        def install(self, environment_name, template):
             container_name = Docker.create_container()
 
             if container_name:
                 
-                Environment.objects.get_or_create(container_name=container_name,name=environment_name)
+                Environment.objects.get_or_create(container_name=container_name,name=environment_name, template=template)
 
                 joined_packages = self.packages + Essentials().packages
                 Docker.build_environment(joined_packages, None, container_name, environment_name)
@@ -134,7 +134,7 @@ class WebFullStack():
         packages = ["python3", "py3-pip"]
         commands = ["pip3 install django", "pip3 install env"]
 
-        def install(self, environment_name):
+        def install(self, environment_name, template):
             container_name = Docker.create_container()
 
             if container_name:
